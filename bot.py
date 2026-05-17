@@ -1,6 +1,8 @@
 import asyncio
 import os
 from aiogram import Bot, Dispatcher, F
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
 from aiogram.types import Message
 from dotenv import load_dotenv
 
@@ -23,7 +25,11 @@ ALL_CLEAR_TEXT = """✅ <b>ВІДБІЙ ТРИВОГИ</b>
 
 """
 
-bot = Bot(token=BOT_TOKEN, parse_mode="HTML")
+# Новий правильний спосіб ініціалізації бота
+bot = Bot(
+    token=BOT_TOKEN,
+    default=DefaultBotProperties(parse_mode=ParseMode.HTML)
+)
 dp = Dispatcher()
 
 @dp.message(F.forward_from_chat)
@@ -46,8 +52,7 @@ async def smart_alert(message: Message):
 
         await message.copy_to(
             chat_id=YOUR_CHANNEL_ID,
-            caption=prefix + original,
-            parse_mode="HTML"
+            caption=prefix + original
         )
         print("✅ Повідомлення надіслано в канал")
     except Exception as e:

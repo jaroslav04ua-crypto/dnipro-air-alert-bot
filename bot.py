@@ -12,13 +12,13 @@ YOUR_CHANNEL_ID = os.getenv("CHANNEL_ID")
 SOURCE = "sirena_dp"
 
 # Текст для тривоги
-ALERT_TEXT = """⚠️ <b>Увага! Повітряна тривога!</b>
+ALERT_TEXT = """⚠️ <b>ПОВІТРЯНА ТРИВОГА!</b>
 📍 Дніпро та Дніпропетровська область
 
 """
 
 # Текст для відбою
-ALL_CLEAR_TEXT = """✅ <b>Відбій повітряної тривоги.</b>
+ALL_CLEAR_TEXT = """✅ <b>ВІДБІЙ ТРИВОГИ</b>
 📍 Дніпро та Дніпропетровська область
 
 """
@@ -37,10 +37,10 @@ async def smart_alert(message: Message):
     try:
         if any(word in lower for word in ["тривог", "сирена", "укриття", "повітряна"]):
             prefix = ALERT_TEXT
-            print("⚠️ Увага! Повітряна тривога!")
+            print("⚠️ Виявлено ТРИВОГУ")
         elif any(word in lower for word in ["відбій", "відбою"]):
             prefix = ALL_CLEAR_TEXT
-            print("✅ "Відбій повітряної тривоги.")
+            print("✅ Виявлено ВІДБІЙ")
         else:
             return
 
@@ -49,12 +49,12 @@ async def smart_alert(message: Message):
             caption=prefix + original,
             parse_mode="HTML"
         )
-        print("✅ Повідомлення успішно надіслано в канал")
+        print("✅ Повідомлення надіслано в канал")
     except Exception as e:
         print(f"Помилка: {e}")
 
 async def main():
-    print("🚀 Бот повітряної тривоги по Дніпру успішно запущений!")
+    print("🚀 Бот повітряної тривоги по Дніпру запущений!")
     await dp.start_polling(bot)
 
 if __name__ == "__main__":

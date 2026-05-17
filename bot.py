@@ -7,12 +7,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ================== НАЛАШТУВАННЯ ==================
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-YOUR_CHANNEL_ID = os.getenv("CHANNEL_ID")
+BOT_TOKEN = os.getenv("8775421484:AAHjD2mDFpLWHVFlu-7RqNgdABwjbYYtsV4")
+YOUR_CHANNEL_ID = os.getenv("-1002996184054")
 SOURCE_USERNAME = "sirena_dp"          # офіційний канал Дніпра
 
 # Твій текст, який буде додаватися перед повідомленням
-CUSTOM_TEXT = "⚠️ Повітряна тривога по Дніпру та області\n\n"
+CUSTOM_TEXT = "⚠️ Увага! Повітряна тривога\n\n"
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
